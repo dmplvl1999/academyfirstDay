@@ -34,6 +34,13 @@
             android:name=".MyService"
             android:enabled="true"
             android:exported="true">
+            <intent-filter>
+                <action android:name="ineed.add"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </service>
+        <service android:name=".JobService.NotificationJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE">
         </service>
 
         <receiver

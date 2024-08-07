@@ -20,6 +20,13 @@ public class MyService extends Service {
         }
     }
 
+    private final IAddListener aidlBinder = new IAddListener.Stub() {
+        @Override
+        public int add(int a, int b) {
+            return a + b;
+        }
+    };
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -52,6 +59,6 @@ public class MyService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         Log.i(TAG,"some activity is trying to bind to this service");
-        return localBinder;
+        return (IBinder) aidlBinder;
     }
 }
